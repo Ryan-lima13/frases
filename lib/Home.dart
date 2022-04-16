@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Home extends StatefulWidget {
 
@@ -8,7 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var frases = [
+  var _frases = [
     "O importante não é vencer todos os dias, mas lutar sempre.",
     "Maior que a tristeza de não haver vencido é a vergonha de não ter lutado!",
     "É melhor conquistar a si mesmo do que vencer mil batalhas.",
@@ -17,6 +18,16 @@ class _HomeState extends State<Home> {
   ];
 
   var _gerarFrases = "Clique Abaixo para gerar frases";
+
+  void _gerarFrase(){
+
+    var numero = Random().nextInt(_frases.length);
+    setState(() {
+      _gerarFrases = _frases[numero];
+    });
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +50,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             ElevatedButton(
-                onPressed: (){},
+                onPressed: _gerarFrase,
                 child: const Text(
                     " Cique Aqui!",
                   style: TextStyle(
